@@ -1,35 +1,22 @@
 const express = require('express')
 const app = express()
-const bodyparser = require('body-parser')
+// const bodyparser = require('body-parser')
 const cors = require('cors')
 const dotenv = require("dotenv")
 dotenv.config()
 require('./db/config')
 
-const userroutes = require('./routes/user');
-const leadroutes = require('./routes/leads')
 app.use(express.json())
 
-
-
-// parse application/json
-app.use(bodyparser.json())
-app.use(express.urlencoded({ extended: false }))
-// app.use(cors({
-//     origin: ``,
-//     credentials: true
-// }))
+const userroutes = require('./routes/user');
+const leadroutes = require('./routes/leads')
 app.use(cors());
 
-
-
-
+app.use(express.json())
 app.get('/', (req, res) => {
-    res.json({
-        msg: 'Welcome Dev ',
-        'blogs-api': 'hello'
-    })
+    res.send('deepak')
 })
+
 app.use('/api', userroutes)
 app.use('/api', leadroutes)
 

@@ -37,9 +37,9 @@ const userCtrl = {
 
             try {
                 const savedUser = await user.save();
-                res.send(savedUser);
+                res.json(savedUser);
             } catch (error) {
-                res.status(400).send(error);
+                res.status(400).json(error);
             }
         }
 
